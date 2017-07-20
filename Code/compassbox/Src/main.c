@@ -99,7 +99,7 @@ int _write(int file, char *data, int len) {   // arbitrary timeout 1000
 }
 
 bool _cmd_rcvd;
-#define TEST
+//#define TEST
 /* USER CODE END 0 */
 
 int main(void)
@@ -107,7 +107,7 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
 	_cmd_rcvd = false;
-	nmeaPOS gps_pos;
+	nmeaPOS gps_pos = {0.0,0.0};
 	state_t state = STARTUP;
   /* USER CODE END 1 */
 
@@ -128,27 +128,23 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
 	printf("Compass\n\r");
-	if(get_zero_state())
-	{
-	motors_off();
-	printf("Paused...\n\r");
-	while(1);
-	}
+//	zero_motor();
+//	compass_init(&hi2c1);
 //	while(1)
 //	{
-//		test_motors();
-//		HAL_Delay(500);
+//		printf("C = %d\n\r",compass_get_heading());
+//		HAL_Delay(1000);
 //	}
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//	get_location(&gps_pos);//i think it is reasonable that the unit isn't going to move in this situation, at least not by enough we'll care
+	get_location(&gps_pos);//i think it is reasonable that the unit isn't going to move in this situation, at least not by enough we'll care
 
 	int16_t current_bearing = 0;
 	int16_t resolved_angle = 0;
-	while (1) {
+	while (1)
+	{
 		switch(state)
 		{
 		case STARTUP:
@@ -173,7 +169,7 @@ int main(void)
 		case GET_FIX:
 			printf("Get fix\n\r");
 //			get_location(&gps_pos);//i think it is reasonable that the unit isn't going to move in this situation, at least not by enough we'll care
-			resolved_angle = 0; //angleFromCoordinate(&gps_pos, &dest_pos);
+			resolved_angle = angleFromCoordinate(&gps_pos, &dest_pos);
 			printf("A= %d\n\r", resolved_angle);
 
 			//@todo implement a timeout
@@ -181,7 +177,7 @@ int main(void)
 			break;
 		case ACTIVE:
 			printf("Active!!\n\r");
-			current_bearing = compass_get_heading();
+			current_bearing = compass_get_heading() - 180;
 //			for now, we'll assume there is 0 fudge factor between the compass and box
 			printf("C = %d,p = %d\n\r", current_bearing, resolved_angle - current_bearing);
 			set_target((resolved_angle - current_bearing + 360)%360);
@@ -395,8 +391,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PB14 */
-  GPIO_InitStruct.Pin = GPIO_PIN_14;
+  /*Configure GPIO pins : PB14 ZERO_Pin */
+  GPIO_InitStruct.Pin = GPIO_PIN_14|ZERO_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);

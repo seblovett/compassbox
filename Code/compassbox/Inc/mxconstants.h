@@ -71,6 +71,8 @@
 #define SWO_GPIO_Port GPIOB
 #define GPS_TX_Pin GPIO_PIN_6
 #define GPS_TX_GPIO_Port GPIOB
+#define ZERO_Pin GPIO_PIN_7
+#define ZERO_GPIO_Port GPIOB
 #define I2C_SCL_Pin GPIO_PIN_8
 #define I2C_SCL_GPIO_Port GPIOB
 #define I2C_SCA_Pin GPIO_PIN_9

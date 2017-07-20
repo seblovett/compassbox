@@ -6,10 +6,10 @@
 
 #define STEPS_PER_FULL		64
 #define INTERNAL_GEAR_RATIO	64
+#define OUTPUT_GEAR_RATIO	2
 #define STEP_ANGLE			(double)(360.0 / (double)(STEPS_PER_FULL*INTERNAL_GEAR_RATIO*OUTPUT_GEAR_RATIO))
-#define OUTPUT_GEAR_RATIO	1
 
-#define STEPS_PER_ROTATION	(STEPS_PER_FULL * INTERNAL_GEAR_RATIO)
+#define STEPS_PER_ROTATION	(STEPS_PER_FULL * INTERNAL_GEAR_RATIO * OUTPUT_GEAR_RATIO )
 
 int16_t current_angle_deg = 0;
 int16_t target_angle_deg = 0;
@@ -102,7 +102,7 @@ void set_speed(uint8_t speed, bool cw_nacw)
 
 bool get_zero_state()
 {
-	return (HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_RESET);
+	return (HAL_GPIO_ReadPin(ZERO_GPIO_Port, ZERO_Pin) == GPIO_PIN_RESET);
 }
 
 void motors_off()
