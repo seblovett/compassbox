@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GerberLayoutSet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <LoadedOutlines>
+    <string>C:\Users\Public\Documents\Altium\Projects\Compass\Outputs\cbox</string>
+  </LoadedOutlines>
+  <Instances>
+    <GerberInstance>
+      <Center>
+        <X>27</X>
+        <Y>0</Y>
+      </Center>
+      <Angle>0</Angle>
+      <GerberPath>C:\Users\Public\Documents\Altium\Projects\Compass\Outputs\cbox</GerberPath>
+      <Generated>false</Generated>
+    </GerberInstance>
+    <GerberInstance>
+      <Center>
+        <X>0</X>
+        <Y>0</Y>
+      </Center>
+      <Angle>0</Angle>
+      <GerberPath>C:\Users\Public\Documents\Altium\Projects\Compass\Outputs\cbox</GerberPath>
+      <Generated>false</Generated>
+    </GerberInstance>
+    <GerberInstance>
+      <Center>
+        <X>0</X>
+        <Y>0</Y>
+      </Center>
+      <Angle>0</Angle>
+      <GerberPath>???_negative</GerberPath>
+      <Generated>false</Generated>
+    </GerberInstance>
+  </Instances>
+  <Tabs>
+    <BreakTab>
+      <Center>
+        <X>25</X>
+        <Y>25</Y>
+      </Center>
+      <Angle>0</Angle>
+      <Radius>21.4</Radius>
+      <Valid>false</Valid>
+    </BreakTab>
+  </Tabs>
+  <Width>50</Width>
+  <Height>50</Height>
+  <MarginBetweenBoards>5</MarginBetweenBoards>
+  <ConstructNegativePolygon>false</ConstructNegativePolygon>
+  <FillOffset>0</FillOffset>
+  <Smoothing>0</Smoothing>
+  <ExtraTabDrillDistance>0</ExtraTabDrillDistance>
+  <ClipToOutlines>true</ClipToOutlines>
+  <LastExportFolder>C:\Users\seblo\Desktop\New folder</LastExportFolder>
+  <DoNotGenerateMouseBites>true</DoNotGenerateMouseBites>
+</GerberLayoutSet>
